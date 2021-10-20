@@ -6,21 +6,22 @@ from pycep_correios import exceptions
 
 def titulo(txt):
     print(linha())
-    print(txt.center(56))
+    print(txt.center(42))
     print(linha())
 
 
 def linha():
-    return "-" * 56
+    return "-" * 42
 
 
 def menu_inicial():
     titulo("MENU PRINCIPAL")
     print(''' [1] - Informações a respeito dos materiais recicláveis
- [2] - Informações a respeito dos pontos de coleta
- [3] - Localização dos pontos de coleta
- [4] - Calculadora
- [5] - Sair
+ [2] - Visualizar pontos de coleta
+ [3] - Visualizar ponto de coleta mais próximo
+ [4] - Listar pontos de coleta a partir do raio do usuário
+ [5] - Calculadora
+ [6] - Sair
      ''')
 
 
@@ -38,13 +39,10 @@ menu_inicial()
 
 escolha_inicial = str(input("Qual opção deseja escolher do menu acima? "))
 
+
 while escolha_inicial != "6":
 
-    if escolha_inicial != "1" and escolha_inicial != "2" and escolha_inicial != "3" and escolha_inicial != "4" and escolha_inicial != "5":
-
-        escolha_inicial = str(input("Escolha inválida, digite novamente "))
-
-    elif escolha_inicial == "1":
+    if escolha_inicial == "1":
 
         titulo("MENU DOS MATERIAIS RECICLÁVEIS")
         menu_material()
@@ -131,24 +129,16 @@ while escolha_inicial != "6":
                 while len(cep) != 8:
                     print("CEP Invalido")
                     cep = str(input("Digite um cep valido "))
-
                 else:
-
                     try:
                         endereco = pycep_correios.get_address_from_cep(cep)
-
                     except exceptions.InvalidCEP as eic:
-                        cep = str(input("CEP inválido, digite novamente "))
-                        endereco = pycep_correios.get_address_from_cep(cep)
-
+                        print("CEP Invalido")
                     except exceptions.CEPNotFound as ecnf:
-                        cep = str(input("CEP não encontrado, digite novamente "))
+                        cep = str(input("Cep não encontrado, digite outro "))
                         endereco = pycep_correios.get_address_from_cep(cep)
-
                     except exceptions.Timeout as errt:
                         print("Erro de conexão, verifique sua conexão com a internet")
-                        quit()
-
                     locator = Nominatim(user_agent="aps")
                     location = locator.geocode(endereco["logradouro"] + "," + endereco["cidade"] + "," + endereco["uf"])
                     p1 = (location.latitude, location.longitude)
@@ -163,9 +153,9 @@ while escolha_inicial != "6":
         # Localização dos ecopontos
 
         lista_latitude = [-22.8172754, -22.9096444, -22.9046067, -22.891067, -22.916885, -22.9102275, -22.9617947,
-                          -22.9420215, -22.885851, -22.9773029, -22.9486031, -22.936197]
+                          -22.9420215, -22.885851, -22.9773029, -22.9486031]
         lista_longitude = [-47.1018107, -47.0685557, -47.1076838, -47.1041653, -47.0368281, -47.0711608, -47.190478,
-                           -47.0309465, -47.1281875, -47.177823, -47.0582585, 47.1207617]
+                           -47.0309465, -47.1281875, -47.177823, -47.0582585]
 
         # Lista vazia onde sera inserido a distancia do usuário até os ecopontos
 
@@ -177,7 +167,7 @@ while escolha_inicial != "6":
                           "Ecoponto Jardim Eulina", "Ecoponto Jardim Paranapanema",
                           "Cooperativa de Reciclagem São Bernardo", "Ecoponto Parque Itajaí",
                           "Ecoponto Jardim São Gabriel", "Ecoponto Parque Via Norte", "Ecoponto Vida Nova",
-                          "Ecoponto Vila Campos Sales", "Ecoponto Vila União"]
+                          "Ecoponto Vila Campos Sales"]
 
         y = 0
         while y <= 10:
@@ -185,59 +175,54 @@ while escolha_inicial != "6":
             lista_dist.append(dist_ecoponto)
             y = y + 1
 
+        # variavel que recebe a posição do valor a cima na lista de distancia
 
-        print('''[ 1 ] - Ecoponto mais próximo
-[ 2 ] - Ecopontos dentro de um determinado raio''')
+        posicao = lista_dist.index(min(lista_dist))
 
-        funcao = str(input("Qual função deseja realizar?"))
+        print("O ecoponto mais próximo de você é o :", lista_ecoponto[posicao])
 
-        while funcao != "1" and funcao != "2":
-
-            funcao = str(input("Função inválida, escolha alguma função presente no menu acima "))
-
-        else:
-
-            if funcao == "1":
-
-                # variavel que recebe a posição do valor a cima na lista de distancia
-
-                posicao = lista_dist.index(min(lista_dist))
-
-                print("O ecoponto mais próximo de você é o :", lista_ecoponto[posicao])
-
-
-            elif funcao == "2":
-
-                raio = int(input("A partir de um raio de quantos quilometros deseja listar os pontos de coleta? "))
-
-                # cria uma lista com todos os valores da lista_dist menores ou igual a 5
-
-                lista_raio = [x for x in lista_dist if x <= raio]
-
-                # verifica cada valor de lista_raio na lista_dist para saber seu indice e compara com o indice da lista_ecoponto para pegar o nome dos locais
-
-                x = 0
-
-                if lista_raio == []:
-                    print("Não possuem ecopontos dentro de um raio de 5 km do seu endereço")
-                else:
-                    print(f"O(s) ecopontos dentro de um raio de {raio} km do seu endereço são :")
-                    while x < len(lista_raio):
-                        posicao1 = lista_dist.index(lista_raio[x])
-                        print(lista_ecoponto[posicao1])
-                        x = x + 1
-
+        print("Função executada")
         menu_inicial()
-        escolha_inicial = str(input("Qual opção deseja escolher? "))
+        escolha_inicial = str(input("Qual opção deseja escolher?"))
+
 
     elif escolha_inicial == "4":
-        print("Calculadora")
-        break
-    else:
-        titulo("PROGRAMA FINALIZADO")
-        quit()
 
+        raio = int(input("A partir de um raio de quantos quilometros deseja listar os pontos de coleta? "))
+
+        # cria uma lista com todos os valores da lista_dist menores ou igual a 5
+
+        lista_raio = [x for x in lista_dist if x <= raio]
+
+        # verifica cada valor de lista_raio na lista_dist para saber seu indice e compara com o indice da lista_ecoponto para pegar o nome dos locais
+
+        x = 0
+
+        if lista_raio == []:
+            print("Não possuem ecopontos dentro de um raio de 5 km do seu endereço")
+        else:
+            print(f"O(s) ecopontos dentro de um raio de {raio} km são :")
+            while x < len(lista_raio):
+                posicao1 = lista_dist.index(lista_raio[x])
+                print(lista_ecoponto[posicao1])
+                x = x + 1
+        print("Função executada")
+        menu_inicial()
+        escolha_inicial = str(input("Qual opção deseja escolher?"))
+
+    else:
+        print("escolha 5")
+        break
 
 if escolha_inicial == "6":
     titulo("PROGRAMA FINALIZADO")
     quit()
+
+
+
+
+
+
+
+
+
