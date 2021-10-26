@@ -9,13 +9,16 @@ def titulo(txt):
     print(txt.center(56))
     print(linha())
 
+
 def sub_titulo(txt):
     print(linha_subtitulo())
     print(txt.center(105))
     print(linha_subtitulo())
 
+
 def linha_subtitulo():
     return "-" * 105
+
 
 def linha():
     return "-" * 56
@@ -41,6 +44,7 @@ def menu_material():
  [7] - Sair               
      ''')
 
+
 def menu_material2():
     print(''' [1] - Plástico  
  [2] - Vidro                
@@ -59,7 +63,8 @@ escolha_inicial = str(input("Qual opção deseja escolher do menu acima? "))
 
 while escolha_inicial != "5":
 
-    if escolha_inicial != "1" and escolha_inicial != "2" and escolha_inicial != "3" and escolha_inicial != "4" and escolha_inicial != "5":
+    if escolha_inicial != "1" and escolha_inicial != "2" and escolha_inicial != "3" and escolha_inicial != "4" and \
+            escolha_inicial != "5":
 
         escolha_inicial = str(input("Escolha inválida, digite novamente "))
 
@@ -109,8 +114,8 @@ Se não reciclar e começar a tratar  ,logo viveremos em um grande lixão.
 
             elif escolha_material == "2":
                 sub_titulo("A RECICLAGEM DO VIDRO NO BRASIL")
-                print('''O vidro foi uma das maiores descobertas da humanidade, principalmente o vidro em sua versão translucida. 
-Enxergar o conteúdo dentro do recipiente mudou nosso forma de consumir, a divisão de paredes de vidro 
+                print('''O vidro foi uma das maiores descobertas da humanidade, principalmente o vidro em sua versão 
+translucida.  Enxergar o conteúdo dentro do recipiente mudou nosso forma de consumir, a divisão de paredes de vidro 
 mudou a arquitetura ou até mesmo as telas de celular utilizam o vidro. O vidro é obtido por fusão de 
 matérias primeiras, em sua grande maioria mineiros em uma mistura básico de areia de sílica, sódio e cálcio. 
 Isso acontece em altas temperaturas (150) para poder dar forma no material e logo em seguida resfriado. 
@@ -177,8 +182,8 @@ Ou seja, quanto mais material reciclado, menos se gasta para construção de esp
 
                 sub_titulo("A RECICLAGEM DO PAPEL NO BRASIL")
 
-                print('''A industria do papel no Brasil iniciou-se em meados dos anos 1850, com a instalação da primeira fábrica, 
-no entanto, só 100 anos depois que o setor recebeu investimento para que pudesse se estruturar. Atualmente,
+                print('''A industria do papel no Brasil iniciou-se em meados dos anos 1850, com a instalação da primeira
+fábrica,  no entanto, só 100 anos depois que o setor recebeu investimento para que pudesse se estruturar. Atualmente,
 esse mercado é responsável por mais de 1% do PIB do país. Aliado ao aumento constante de fabricação do papel, 
 o setor de reciclagem tem aumento gradativo no país.
 
@@ -229,7 +234,10 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
 
         while escolha_material2 != "8":
 
-            if escolha_material2 != "1" and escolha_material2 != "2" and escolha_material2 != "3" and escolha_material2 != "4" and escolha_material2 != "5" and escolha_material2 != "6 " and escolha_material2 != "7":
+            if escolha_material2 != "1" and escolha_material2 != "2" and escolha_material2 != "3" \
+                    and escolha_material2 != "4" and escolha_material2 != "5" and escolha_material2 != "6 " \
+                    and escolha_material2 != "7":
+
                 escolha_material2 = str(input("Opção inválida, digite novamente "))
 
             elif escolha_material2 == "1":
@@ -278,10 +286,11 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
 
         while escolha != "1" and escolha != "2":
             escolha = str(input("Escolha inexistente, por favor insira um número referente ao menu acima "))
+
         else:
             if escolha == "1":
                 cep = str(input("Digite seu CEP "))
-                while len(cep) != 8:
+                while len(cep) != 8 or cep == "99999999":
                     print("CEP Invalido")
                     cep = str(input("Digite um cep valido "))
 
@@ -299,17 +308,22 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
                         endereco = pycep_correios.get_address_from_cep(cep)
 
                     except exceptions.Timeout as errt:
-                        print("Erro de conexão, verifique sua conexão com a internet")
+                        print("Erro de conexão, verifique sua conexão com a internet e execute novamente o programa")
                         quit()
 
-                    locator = Nominatim(user_agent="aps")
-                    location = locator.geocode(endereco["logradouro"] + "," + endereco["cidade"] + "," + endereco["uf"])
-                    p1 = (location.latitude, location.longitude)
+                    else:
+                        locator = Nominatim(user_agent="aps")
+                        location = locator.geocode(endereco["logradouro"] + "," + endereco["cidade"] + "," +
+                                                   endereco["uf"])
+                        p1 = (location.latitude, location.longitude)
+
             else:
                 locator = Nominatim(user_agent="aps")
-                location = locator.geocode(str(input("Digite seu endereço (EXEMPLO: Av Padre Guilherme Ary, 81, Campinas - SP) ")))
-                while location == None:
-                    location = locator.geocode(str(input("Endereço inválido, insira outro (EXEMPLO: Av Padre Guilherme Ary, 81, Campinas - SP):  ")))
+                location = locator.geocode(str(input("Digite seu endereço (EXEMPLO: Av Padre Guilherme Ary, 81,"
+                                                     " Campinas - SP) ")))
+                while location is None:
+                    location = locator.geocode(str(input("Endereço inválido, insira outro (EXEMPLO: Av Padre Guilherme "
+                                                         "Ary, 81, Campinas - SP):  ")))
                 else:
                     p1 = (location.latitude, location.longitude)
 
@@ -319,6 +333,10 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
                           -22.9420215, -22.885851, -22.9773029, -22.9486031, -22.936197]
         lista_longitude = [-47.1018107, -47.0685557, -47.1076838, -47.1041653, -47.0368281, -47.0711608, -47.190478,
                            -47.0309465, -47.1281875, -47.177823, -47.0582585, 47.1207617]
+
+        lista_lat_oleo = [-22.9258933, -22.8942854, -22.89136, -22.9465589, -22.8439297, -22.9051623]
+
+        lista_long_oleo = [-47.08159, -47.0604147, -47.0260114, -47.0314758, -47.1023985, -46.9801448]
 
         # Lista vazia onde sera inserido a distancia do usuário até os ecopontos
 
@@ -332,56 +350,140 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
                           "Ecoponto Jardim São Gabriel", "Ecoponto Parque Via Norte", "Ecoponto Vida Nova",
                           "Ecoponto Vila Campos Sales", "Ecoponto Vila União"]
 
-        y = 0
-        while y <= 10:
-            dist_ecoponto = geopy.distance.distance(p1, (lista_latitude[y], lista_longitude[y])).km
-            lista_dist.append(dist_ecoponto)
-            y = y + 1
+        lista_oleovegetal = ["Tenda Atacado", "Carrefour Cambuí", "Carrefour Iguatemi", "Carrefour Von Zuben",
+                             "Tenda Dom Pedro", "Carrefour Dom Pedro"]
 
+        print(linha())
+        print('''[1] - Plástico  
+[2] - Vidro                
+[3] - Metal 
+[4] - Papel
+[5] - Pilhas e baterias
+[6] - Óleo Vegetal ''')
 
-        print('''[ 1 ] - Ecoponto mais próximo
-[ 2 ] - Ecopontos dentro de um determinado raio''')
+        material = str(input("Deseja obter a informação dos pontos de coleta de qual material? "))
 
-        funcao = str(input("Qual função deseja realizar?"))
+        while material != "1" and material != "2" and material != "3" and material != "4" and material != "5" and \
+                material != "6":
 
-        while funcao != "1" and funcao != "2":
-
-            funcao = str(input("Função inválida, escolha alguma função presente no menu acima "))
+            material = str(input("Escolha inválida, digite novamente "))
 
         else:
 
-            if funcao == "1":
+            if material == "1" or material == "2" or material == "3" or material == "4":
 
-                # variavel que recebe a posição do valor a cima na lista de distancia
+                lista_dist = []
 
-                posicao = lista_dist.index(min(lista_dist))
+                y = 0
+                while y < len(lista_latitude):
+                    dist_ecoponto = geopy.distance.distance(p1, (lista_latitude[y], lista_longitude[y])).km
+                    lista_dist.append(dist_ecoponto)
+                    y = y + 1
+                print(linha())
 
-                print("O ecoponto mais próximo de você é o :", lista_ecoponto[posicao])
+                print('''[ 1 ] - Ecoponto mais próximo
+[ 2 ] - Ecopontos dentro de um determinado raio''')
 
+                funcao = str(input("Qual função deseja realizar? "))
 
-            elif funcao == "2":
+                while funcao != "1" and funcao != "2":
 
-                raio = int(input("A partir de um raio de quantos quilometros deseja listar os pontos de coleta? "))
+                    funcao = str(input("Função inválida, escolha alguma função presente no menu acima "))
 
-                # cria uma lista com todos os valores da lista_dist menores ou igual a 5
-
-                lista_raio = [x for x in lista_dist if x <= raio]
-
-                # verifica cada valor de lista_raio na lista_dist para saber seu indice e compara com o indice da lista_ecoponto para pegar o nome dos locais
-
-                x = 0
-
-                if lista_raio == []:
-                    print("Não possuem ecopontos dentro de um raio de 5 km do seu endereço")
                 else:
-                    print(f"O(s) ecopontos dentro de um raio de {raio} km do seu endereço são :")
-                    while x < len(lista_raio):
-                        posicao1 = lista_dist.index(lista_raio[x])
-                        print(lista_ecoponto[posicao1])
-                        x = x + 1
 
-        menu_inicial()
-        escolha_inicial = str(input("Qual opção deseja escolher? "))
+                    if funcao == "1":
+
+                        # variavel que recebe a posição do valor a cima na lista de distancia
+
+                        posicao = lista_dist.index(min(lista_dist))
+
+                        print("O ecoponto mais próximo de você é o :", lista_ecoponto[posicao])
+
+                    elif funcao == "2":
+
+                        raio = int(input("A partir de um raio de quantos quilometros deseja listar os pontos de "
+                                         "coleta? "))
+
+                        # cria uma lista com todos os valores da lista_dist menores ou igual a 5
+
+                        lista_raio = [x for x in lista_dist if x <= raio]
+
+                        # verifica cada valor de lista_raio na lista_dist para saber seu indice
+                        # compara com o indice da lista_ecoponto para pegar o nome dos locais
+
+                        x = 0
+
+                        if lista_raio == []:
+                            print("Não possuem ecopontos dentro de um raio de 5 km do seu endereço")
+                        else:
+                            print(linha())
+                            print(f"O(s) ecopontos dentro de um raio de {raio} km do seu endereço são :")
+                            while x < len(lista_raio):
+                                posicao1 = lista_dist.index(lista_raio[x])
+                                print(lista_ecoponto[posicao1])
+                                x = x + 1
+
+                            menu_inicial()
+                            escolha_inicial = str(input("Qual opção deseja escolher? "))
+
+            else:
+
+                lista_dist = []
+
+                y = 0
+                while y < len(lista_lat_oleo):
+                    dist_ecoponto = geopy.distance.distance(p1, (lista_lat_oleo[y], lista_long_oleo[y])).km
+                    lista_dist.append(dist_ecoponto)
+                    y = y + 1
+
+                print(linha())
+
+                print('''[ 1 ] - Ecoponto mais próximo
+[ 2 ] - Ecopontos dentro de um determinado raio''')
+
+                funcao = str(input("Qual função deseja realizar? "))
+
+                while funcao != "1" and funcao != "2":
+
+                    funcao = str(input("Função inválida, escolha alguma função presente no menu acima "))
+
+                else:
+
+                    if funcao == "1":
+
+                        # variavel que recebe a posição do valor a cima na lista de distancia
+
+                        posicao = lista_dist.index(min(lista_dist))
+
+                        print("O ecoponto mais próximo de você é o :", lista_oleovegetal[posicao])
+
+                    elif funcao == "2":
+
+                        raio = int(
+                            input("A partir de um raio de quantos quilometros deseja listar os pontos de coleta? "))
+
+                        # cria uma lista com todos os valores da lista_dist menores ou igual a 5
+
+                        lista_raio = [x for x in lista_dist if x <= raio]
+
+                        # verifica cada valor de lista_raio na lista_dist para saber seu indice
+                        # compara com o indice da lista_ecoponto para pegar o nome dos locais
+
+                        x = 0
+
+                        if lista_raio == []:
+                            print("Não possuem ecopontos dentro de um raio de 5 km do seu endereço")
+                        else:
+                            print(linha())
+                            print(f"O(s) ecopontos dentro de um raio de {raio} km do seu endereço são :")
+                            while x < len(lista_raio):
+                                posicao1 = lista_dist.index(lista_raio[x])
+                                print(lista_oleovegetal[posicao1])
+                                x = x + 1
+
+                            menu_inicial()
+                            escolha_inicial = str(input("Qual opção deseja escolher? "))
 
     elif escolha_inicial == "4":
         print("Calculadora")
@@ -393,7 +495,6 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
 else:
     titulo("PROGRAMA FINALIZADO")
     quit()
-
 
 if escolha_inicial == "6":
     titulo("PROGRAMA FINALIZADO")
