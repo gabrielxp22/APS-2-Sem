@@ -6,7 +6,7 @@ from pycep_correios import exceptions
 
 def titulo(txt):
     print(linha())
-    print(txt.center(56))
+    print(txt.center(57))
     print(linha())
 
 
@@ -21,39 +21,44 @@ def linha_subtitulo():
 
 
 def linha():
-    return "-" * 56
+    return "-" * 57
 
 
 def menu_inicial():
     titulo("MENU PRINCIPAL")
-    print(''' [1] - Informações a respeito dos materiais recicláveis
- [2] - Informações a respeito dos pontos de coleta
- [3] - Localização dos pontos de coleta
- [4] - Calculadora
- [5] - Sair
+    print('''⎪ [1] - Informações a respeito dos materiais recicláveis ⎪ 
+⎪ [2] - Informações a respeito dos pontos de coleta      ⎪
+⎪ [3] - Localização dos pontos de coleta                 ⎪
+⎪ [4] - Calculadora                                      ⎪
+⎪ [5] - Sair                                             ⎪
+⎪________________________________________________________⎪
      ''')
 
 
 def menu_material():
-    print(''' [1] - Plástico  
- [2] - Vidro                
- [3] - Metal 
- [4] - Papel
- [5] - Pilhas e baterias
- [6] - Voltar 
- [7] - Sair               
+    print('''__________________________
+⎪ [1] - Plástico          ⎪  
+⎪ [2] - Vidro             ⎪                
+⎪ [3] - Metal             ⎪
+⎪ [4] - Papel             ⎪
+⎪ [5] - Pilhas e baterias ⎪
+⎪ [6] - Voltar            ⎪ 
+⎪ [7] - Sair              ⎪
+⎪_________________________⎪               
      ''')
 
 
 def menu_material2():
-    print(''' [1] - Plástico  
- [2] - Vidro                
- [3] - Metal 
- [4] - Papel
- [5] - Pilhas e baterias
- [6] - Oleo vegetal
- [7] - Voltar 
- [8] - Sair               
+    print('''__________________________
+⎪ [1] - Plástico          ⎪  
+⎪ [2] - Vidro             ⎪           
+⎪ [3] - Metal             ⎪
+⎪ [4] - Papel             ⎪
+⎪ [5] - Pilhas e baterias ⎪
+⎪ [6] - Oleo vegetal      ⎪
+⎪ [7] - Voltar            ⎪
+⎪ [8] - Sair              ⎪
+⎪_________________________⎪              
      ''')
 
 
@@ -74,9 +79,9 @@ while escolha_inicial != "5":
         menu_material()
         escolha_material = str(input("Qual opção deseja escolher do menu acima? "))
 
-        while escolha_material != "7":
+        while escolha_material != "7": #WHILE RESPONSAVEL POR MOSTRAR AS INFORMAÇÕES DOS MATERIAIS
 
-            if escolha_material == "1":
+            if escolha_material == "1": #TEXTO PLÁSTICO
                 sub_titulo("A RECICLAGEM DO PLÁSTICO NO BRASIL")
                 print('''Características : 
                 
@@ -112,7 +117,7 @@ Se não reciclar e começar a tratar  ,logo viveremos em um grande lixão.
 
                 break
 
-            elif escolha_material == "2":
+            elif escolha_material == "2": #TEXTO VIDRO
                 sub_titulo("A RECICLAGEM DO VIDRO NO BRASIL")
                 print('''O vidro foi uma das maiores descobertas da humanidade, principalmente o vidro em sua versão 
 translucida.  Enxergar o conteúdo dentro do recipiente mudou nosso forma de consumir, a divisão de paredes de vidro 
@@ -136,10 +141,8 @@ Deve-se fazer uma triagem do material antes do descarte, o vidro também não po
 principalmente se estiver quebrado.''')
                 break
 
-            elif escolha_material == "3":
-
+            elif escolha_material == "3": #TEXTO METAL
                 sub_titulo("A RECICLAGEM DO METAL NO BRASIL")
-
                 print('''- Características
 
 
@@ -178,10 +181,8 @@ a bauxita sendo considerada um minério de alta qualidade no Brasil (e provocado
 Ou seja, quanto mais material reciclado, menos se gasta para construção de espaços para seu recebimento.''')
                 break
 
-            elif escolha_material == "4":
-
+            elif escolha_material == "4": #TEXTO PAPEL
                 sub_titulo("A RECICLAGEM DO PAPEL NO BRASIL")
-
                 print('''A industria do papel no Brasil iniciou-se em meados dos anos 1850, com a instalação da primeira
 fábrica,  no entanto, só 100 anos depois que o setor recebeu investimento para que pudesse se estruturar. Atualmente,
 esse mercado é responsável por mais de 1% do PIB do país. Aliado ao aumento constante de fabricação do papel, 
@@ -211,13 +212,61 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
                 break
 
             elif escolha_material == "5":
-                print("Pilhas e baterias")
+                sub_titulo("A RECICLAGEM DAS PILHAS E BATERIAS NO BRASIL")
+                print(''' Pilhas:
+                
+a pilha é basicamente um envoltório de zinco um tipo de metal constituído por uma barra de grafita ou carvão inserida 
+em um tubo poroso que contém carvão esmagado e dióxido de manganês. Envolvida por uma pasta úmida, uma solução que 
+possibilita a condução de carga elétrica no interior da pilha, existem diversos tipos de pilhas diferentes desde 
+as de Zinco, as alcalinas (constituídas de metais do tipo alcalino terroso), as de lítio (constituída de íons de 
+lítio o que a torna uma pilha recarregável).
+
+Baterias:
+
+Agora falando sobre as baterias, elas são formadas por várias pilhas ligadas entre si. as baterias podem fornecer 
+diferentes voltagens e níveis de corrente. Uma pilha comum geralmente possui voltagem igual a 1,5 V, sendo que seis 
+pilhas ligadas em série originam uma bateria de 9 V. Um exemplo é a bateria de chumbo usada nos automóveis. 
+Ela é formada por seis pilhas de 2 V cada, possuindo uma potência de 12 V no total. 
+Ela é formada por várias placas de chumbo todas essas placas ficam imersas em uma solução de ácido sulfúrico (H2SO4) e 
+são intercaladas e separadas por papelão ou plástico, alguns tipos de baterias incluem, baterias de níquel ou cádmio, 
+bateria de íons de lítio (por não usarem lítio metálico, mas sim íons de lítio elas são recarregáveis).
+
+Cuidados a serem tomados:
+
+Pilhas:
+
+Use sempre o tamanho e o tipo corretos de pilha, especificados pelo fabricante do aparelho. 
+Mantenha as superfícies de contato da pilha limpos, passando neles uma borracha de lápis limpa ou um pano áspero 
+cada vez que você as trocar. Temperaturas extremas reduzem o desempenho das pilhas. Armazene-as em um local seco em 
+temperatura ambiente normal. Não as refrigere, pois isso não fará com que durem mais tempo, e evite colocar dispositivos 
+com pilhas em locais muito quentes.
+
+Baterias:
+
+As baterias automotivas possuem componentes que podem ser prejudiciais ao meio ambiente, um bom exemplo são as baterias 
+de chumbo elas possuem vários componentes tóxicos que podem contaminar o solo. Por isso, você não deve jogá-las em lixos 
+convencionais ou na natureza, pois em uma bateria de chumbo-ácido encontram-se elementos químicos extremamente 
+prejudiciais para os seres vivos. A peça é composta de chumbo e outros materiais tóxicos. Quando mal descartada pode 
+causar disfunções no sistema nervoso, problemas ósseos, circulatórios etc.
+
+Formas de reutilização Pilhas e Baterias:
+
+Após passar pela etapa de trituração as pilhas e baterias são submetidas a mais dois processos antes de serem 
+reaproveitadas No processo químico as baterias são submetidas a um processo que recupera sais e óxidos metálicos que 
+são posteriormente utilizados na indústria como matéria prima  em corantes e pigmentos, no processo térmico elas são 
+levadas ao forno do tipo industrial onde são submetidas a alta temperatura para a separação do zinco, assim podendo ser 
+reutilizado novamente na confecção de novas pilhas ou baterias, O processo de reciclagem de pilhas e baterias 
+reaproveita os metais e componentes químicos. Além disso, todos eventuais resíduos do processo são também tratados e 
+reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma destinação ambientalmente correta.
+                ''')  #TEXTO PILHAS E BATERIAS
                 break
-            elif escolha_material == "6":
+
+            elif escolha_material == "6": #ELIF RESPOSAVEL PELA FUNÇÃO "VOLTAR" DO MENU, RETORNA O MENU INICIAL
                 menu_inicial()
                 escolha_inicial = str(input("Qual opção deseja escolher do menu acima? "))
                 break
-            elif escolha_material == "7":
+
+            elif escolha_material == "7": #ELIF RESPOSAVEL POR FECHAR O PROGRAMA
                 print("Sair")
 
         if escolha_material == "7":
@@ -242,7 +291,22 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
 
             elif escolha_material2 == "1":
 
+                titulo("OS PONTOS DE COLETA DE PLÁSTICO NA REGIÃO DE CAMPINAS SÃO:")
+                print('''
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                ''')
                 print("Abaixo está listado os pontos de coleta de plástico e suas informações")
+                break
 
             elif escolha_material2 == "2":
 
@@ -353,13 +417,15 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
         lista_oleovegetal = ["Tenda Atacado", "Carrefour Cambuí", "Carrefour Iguatemi", "Carrefour Von Zuben",
                              "Tenda Dom Pedro", "Carrefour Dom Pedro"]
 
-        print(linha())
-        print('''[1] - Plástico  
-[2] - Vidro                
-[3] - Metal 
-[4] - Papel
-[5] - Pilhas e baterias
-[6] - Óleo Vegetal ''')
+        print('''__________________________
+⎪ [1] - Plástico          ⎪  
+⎪ [2] - Vidro             ⎪                
+⎪ [3] - Metal             ⎪ 
+⎪ [4] - Papel             ⎪
+⎪ [5] - Pilhas e baterias ⎪
+⎪ [6] - Óleo Vegetal      ⎪
+⎪_________________________⎪
+''')
 
         material = str(input("Deseja obter a informação dos pontos de coleta de qual material? "))
 
@@ -424,8 +490,8 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
                                 print(lista_ecoponto[posicao1])
                                 x = x + 1
 
-                            menu_inicial()
-                            escolha_inicial = str(input("Qual opção deseja escolher? "))
+                    menu_inicial()
+                    escolha_inicial = str(input("Qual opção deseja escolher? "))
 
             else:
 
@@ -482,12 +548,255 @@ os dois lados e armazenado em grandes rolos que podem pesar até 3 toneladas.'''
                                 print(lista_oleovegetal[posicao1])
                                 x = x + 1
 
-                            menu_inicial()
-                            escolha_inicial = str(input("Qual opção deseja escolher? "))
+                    menu_inicial()
+                    scolha_inicial = str(input("Qual opção deseja escolher? "))
 
     elif escolha_inicial == "4":
-        print("Calculadora")
-        break
+
+        # Calculadora de preço de venda material reciclado
+
+        '''
+        a = metal
+        b = vidro
+        c = papel
+        d = plastico
+        '''
+        '''
+        print('a: metal; b: vidro; c: papel; d: plastico')
+        material = a
+            if material = a:
+                kilo = input('Quantos kilos de material você tem: ')
+                valor = kilo * 4.35
+                print(valor)
+            elif material = b:
+                kilo = input('Quantos kilos de material você tem: ')
+                valor = kilo * 6.95
+                print(valor)
+            elif material = c:
+                kilo = input('Quantos kilos de material você tem: ')
+                valor = kilo * 6.95
+                print(valor)
+            else:
+                kilo = input('Quantos kilos de material você tem: ')
+                valor = kilo * 6.95
+                print(valor)
+        '''
+
+        # Calculadora de preço de venda material reciclado
+
+        print('''__________________________
+        ⎪ [1] - Plástico          ⎪  
+        ⎪ [2] - Vidro             ⎪                
+        ⎪ [3] - Metal             ⎪
+        ⎪ [4] - Papel             ⎪
+        ⎪ [5] - Voltar            ⎪
+        ⎪ [6] - Sair              ⎪
+        ⎪_________________________⎪               
+             ''')
+
+        material = input('Qual opção você deseja? ')
+
+
+        while material != "6":
+
+
+            while material != "1" and material != "2" and material != "3" and material != "4" and material != "5" and material != "6":
+                material = input("Escolha inválida, digite um número referente ao menu acima ")
+
+            else:
+
+                if material == "1":
+
+                    kilo = float(input(f'Quantos quilos você tem: '))
+
+                    print('''TIPOS DE PLÁSTICO
+                    [1] - Garrafa PET
+                    [2] - Plástico diversos
+                    [3] - Voltar
+                    ''')
+
+                    plastico = input("Qual tipo de plástico voce possuí ")
+
+                    while plastico != "3":
+
+                        if plastico != "1" and plastico != "2":
+                            plastico = input("Escolha inválida, digite um número referente ao menu acima ")
+
+                        elif plastico == "1":
+                            valor = kilo * 0.8
+                            print(f"Você receberá por {kilo} quilos de garrafa PET R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+
+                        else:
+                            valor = kilo * 0.5
+                            print(f"Você receberá por {kilo} de plásticos diversos  R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                    else:
+                        break
+
+                elif material == "2":
+
+                    kilo = float(input(f'Quantos quilos você tem: '))
+
+                    print('''TIPOS DE VIDRO
+                                    [1] - Branco
+                                    [2] - Verde / Marrom
+                                    [3] - Voltar
+                                    ''')
+
+                    vidro = input("Qual tipo de vidro voce possuí ")
+
+                    while vidro != "3":
+
+                        if vidro != "1" and vidro != "2":
+                            vidro = input("Escolha inválida, digite um número referente ao menu acima ")
+
+                        elif vidro == "1":
+                            valor = kilo * 0.38
+                            print(f"Você receberá por {kilo} quilos de vidro branco R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                        else:
+                            valor = kilo * 0.35
+                            print(f"Você receberá por {kilo} quilos de vidro verde / marrom  R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                    else:
+                        break
+
+                elif material == "3":
+
+                    kilo = float(input(f'Quantos quilos você tem: '))
+
+                    print('''TIPOS DE METAL
+                    [1] - Metal
+                    [2] - Inox
+                    [3] - Alumínio
+                    [4] - Sucata de latinha
+                    [5] - Ferro misto
+                    [6] - Voltar
+                    ''')
+
+                    metal = input("Qual tipo de metal você possuí ")
+
+                    while metal != "6":
+
+                        if metal != "1" and metal != "2" and metal != "3" and metal != "4" and metal != "5":
+                            metal = input("Escolha inválida, digite um número referente ao menu acima ")
+
+                        elif metal == "1":
+                            valor = kilo * 12
+                            print(f"Você receberá por {kilo} quilos de metal R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                        elif metal == "2":
+                            valor = kilo * 3.5
+                            print(f"Você receberá por {kilo} quilos de inox R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                        elif metal == "3":
+                            valor = kilo * 3.6
+                            print(f"Você receberá por {kilo} quilos de alumínio R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                        elif metal == "4":
+                            valor = kilo * 4.5
+                            print(f"Você receberá por {kilo} quilos de sucata de latinha R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                        else:
+                            valor = kilo * 0.75
+                            print(f"Você receberá por {kilo} quilos de ferro misto R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menua acima? ")
+                            break
+
+                    else:
+                        break
+
+                elif material == "4":
+
+                    kilo = float(input(f'Quantos quilos você tem: '))
+
+                    print('''TIPOS DE PAPEL
+                                                    [1] - Branco
+                                                    [2] - Mista
+                                                    [3] - Papelão
+                                                    [4] - Voltar
+                                                    ''')
+
+                    papel = input("Qual tipo de papel voce possuí ")
+
+                    while papel != "4":
+
+                        if papel != "1" and papel != "2" and papel != "3":
+                            papel = input("Escolha inválida, digite um número referente ao menu acima ")
+
+                        elif papel == "1":
+                            valor = kilo * 0.45
+                            print(f"Você receberá por {kilo} quilos de papel branco R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menu acima? ")
+                            break
+
+                        elif papel == "2":
+                            valor = kilo * 0.2
+                            print(f"Você receberá por {kilo} quilos de asparas mista R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menu acima? ")
+                            break
+
+                        else:
+                            valor = kilo * 0.15
+                            print(f"Você receberá por {kilo} quilos de papelão  R$ {valor}")
+
+                            menu_inicial()
+                            escolha_inicial = input("Qual opção deseja escolher do menu acima? ")
+                            break
+
+                    else:
+                        break
+
+                else:
+
+                    menu_inicial()
+                    escolha_inicial = input("Escolha uma opção do menu acima ")
+
+                break
+
+        else:
+            titulo("PROGRAMA FINALIZADO")
+            quit()
+
     else:
         titulo("PROGRAMA FINALIZADO")
         quit()
@@ -496,6 +805,31 @@ else:
     titulo("PROGRAMA FINALIZADO")
     quit()
 
-if escolha_inicial == "6":
-    titulo("PROGRAMA FINALIZADO")
-    quit()
+''' if material == 'metal':
+            valor = kilo * 1.5
+            print('Você receberá por', kilo, 'kg de metal R$', valor)
+        elif material == 'plastico':
+            valor = kilo * 0.4
+            print('Você receberá por', kilo, 'kg de plástico R$', valor)
+        elif material == 'vidro':
+            valor = kilo * 1.02
+            print('Você receberá por', kilo, 'kg de vidro R$', valor)
+        elif material == 'papel':
+            valor = kilo * 1.4
+            print('Você receberá por', kilo, 'kg de papel R$', valor)
+        else:
+            print('deu ruim')
+        break '''
+
+''' 
+
+MELHORAS A FAZER 
+
+    1 - Utilizar função para evitar partes repetidas do código
+    2 - Tratar TODAS excessoes 
+    3 - Comentar todo o código
+    4 - Otimizar e simplificar toda linha do comando possível
+    
+'''
+
+
