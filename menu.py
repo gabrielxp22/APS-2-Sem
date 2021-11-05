@@ -4,6 +4,15 @@ import pycep_correios
 from pycep_correios import exceptions
 
 
+
+def titulo_menu2(txt):
+    print(linha_menu2())
+    print(txt.center(180))
+
+def linha_menu2():
+    return "-" * 180
+
+
 def titulo(txt):
     print(linha())
     print(txt.center(57))
@@ -36,29 +45,29 @@ def menu_inicial():
 
 
 def menu_material():
-    print('''__________________________
-⎪ [1] - Plástico          ⎪  
-⎪ [2] - Vidro             ⎪                
-⎪ [3] - Metal             ⎪
-⎪ [4] - Papel             ⎪
-⎪ [5] - Pilhas e baterias ⎪
-⎪ [6] - Voltar            ⎪ 
-⎪ [7] - Sair              ⎪
-⎪_________________________⎪               
+    print('''                __________________________
+                ⎪ [1] - Plástico          ⎪  
+                ⎪ [2] - Vidro             ⎪                
+                ⎪ [3] - Metal             ⎪
+                ⎪ [4] - Papel             ⎪
+                ⎪ [5] - Pilhas e baterias ⎪
+                ⎪ [6] - Voltar            ⎪ 
+                ⎪ [7] - Sair              ⎪
+                ⎪_________________________⎪               
      ''')
 
 
 def menu_material2():
-    print('''__________________________
-⎪ [1] - Plástico          ⎪  
-⎪ [2] - Vidro             ⎪           
-⎪ [3] - Metal             ⎪
-⎪ [4] - Papel             ⎪
-⎪ [5] - Pilhas e baterias ⎪
-⎪ [6] - Oleo vegetal      ⎪
-⎪ [7] - Voltar            ⎪
-⎪ [8] - Sair              ⎪
-⎪_________________________⎪              
+    print('''               __________________________
+               ⎪ [1] - Plástico          ⎪  
+               ⎪ [2] - Vidro             ⎪           
+               ⎪ [3] - Metal             ⎪
+               ⎪ [4] - Papel             ⎪
+               ⎪ [5] - Pilhas e baterias ⎪
+               ⎪ [6] - Oleo vegetal      ⎪
+               ⎪ [7] - Voltar            ⎪
+               ⎪ [8] - Sair              ⎪
+               ⎪_________________________⎪              
      ''')
 
 
@@ -271,7 +280,7 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
         if escolha_material == "7":
 
-            print("Progama finalizado")
+            titulo("PROGRAMA FINALIZADO")
             quit()
 
     elif escolha_inicial == "2":
@@ -284,49 +293,71 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
         while escolha_material2 != "8":
 
             if escolha_material2 != "1" and escolha_material2 != "2" and escolha_material2 != "3" \
-                    and escolha_material2 != "4" and escolha_material2 != "5" and escolha_material2 != "6 " \
+                    and escolha_material2 != "4" and escolha_material2 != "5" and escolha_material2 != "6" \
                     and escolha_material2 != "7":
 
                 escolha_material2 = str(input("Opção inválida, digite novamente "))
 
-            elif escolha_material2 == "1":
+            elif escolha_material2 == "1" or escolha_material2 == "2" or escolha_material2 == "3" or \
+                    escolha_material2 == "4":
 
-                titulo("OS PONTOS DE COLETA DE PLÁSTICO NA REGIÃO DE CAMPINAS SÃO:")
                 print('''
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                ''')
-                print("Abaixo está listado os pontos de coleta de plástico e suas informações")
+⎪--------------------------------------------------------------------------------------------------------------------------------------------------------⎪
+⎪                                      OS PONTOS DE COLETA DO MATERIAL ESCOLHIDO NA REGIÃO DE CAMPINAS SÃO:                                              ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪            
+⎪                  NOME                   ⎪                           ENDEREÇO                            ⎪            HORÁRIO DE FUNCIONAMENTO           ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Ecoponto / Ponto Verde Barão Geraldo    ⎪ Av. Santa Isabel, s/nº, Barão Geraldo                         ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪ 
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Ecoponto central                        ⎪ Rua Francisco Theodoro, 1050, Vila Industrial, Região Central ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪ 
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Ecoponto Jardim Pacaembu                ⎪ Rua Dante Suriane, Jardim Pacaembu                            ⎪ Das 7h às 18h, todos os dias                  ⎪ 
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Ecoponto Jardim Eulina                  ⎪ Avenida Marechal Rondon, Jardim Eulina                        ⎪ Das 7h às 18h, todos os dias                  ⎪ 
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Ecoponto Jardim Paranapanema            ⎪ Rua Serra D água, Jardim Paranapanema                         ⎪ Das 7h às 18h, todos os dias                  ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Cooperativa de Reciclagem São Bernanrdo ⎪ Av. Prefeito Faria Lima, 630, Parque Itália                   ⎪ Das 7h às 16h12, de segunda a sexta-feira     ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪ 
+⎪ Ecoponto Parque Itajaí                  ⎪ Rua Celso Soares Couto, s/n, Parque Itajaí                    ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪ 
+⎪ Ecoponto Jardim São Gabriel             ⎪ Rua Jose Martins Lourenço, Jardim São Gabriel                 ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪ 
+⎪ Ecoponto Parque Via Norte               ⎪ Rua dos Cambarás, 200, Parque Via Norte                       ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪ 
+⎪ Ecoponto Vida Nova                      ⎪ Rua Góia Jr, s/n                                              ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪ 
+⎪ Ecoponto Vila Campos Sales              ⎪ Avenida São Jose dos Campos, s/n, Vila Campos Sales           ⎪ Das 7h às 18h, todos os dias                  ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪ 
+⎪ Ecoponto Vila União                     ⎪ Rua Manoel Gomes Ferreira                                     ⎪ Das 7h às 18h, todos os dias                  ⎪
+⎪-----------------------------------------⎪---------------------------------------------------------------⎪-----------------------------------------------⎪
+⎪ Ecoponto Sousas                         ⎪ Rua Dom Pedro, 464                                            ⎪ Das 7h às 18h, todos os dias, exceto feriados ⎪
+⎪--------------------------------------------------------------------------------------------------------------------------------------------------------⎪
+''')
                 break
 
-            elif escolha_material2 == "2":
+            elif escolha_material2 == "5" or escolha_material2 == "6":
 
-                print("Abaixo está listado os pontos de coleta de vidro e suas informações")
-
-            elif escolha_material2 == "3":
-
-                print("Abaixo está listado os pontos de coleta de metal e suas informações")
-
-            elif escolha_material2 == "4":
-
-                print("Abaixo está listado os pontos de coleta de papel e suas informações")
-
-            elif escolha_material2 == "5":
-
-                print("Abaixo está listado os pontos de coleta de pilhas e baterias  e suas informações")
-
-            elif escolha_material2 == "6":
-
-                print("Abaixo está listado os pontos de coleta de oleo vegetal e suas informações")
+                print('''
+⎪---------------------------------------------------------------------------------------------------------------------------------------------------------------⎪
+⎪                                               OS PONTOS DE COLETA DO MATERIAL ESCOLHIDO NA REGIÃO DE CAMPINAS SÃO:                                            ⎪
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪            
+⎪         NOME        ⎪                              ENDEREÇO                              ⎪                       HORÁRIO DE FUNCIONAMENTO                      ⎪
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪
+⎪ Tenda Atacado       ⎪ Rua João Felipe Xavier da Silva, 190 - São Bernardo                ⎪ das 7h às 22h, de segunda a sábado. Das 8h as 18h aos domingos      ⎪ 
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪
+⎪ Carrefour Cambuí    ⎪ Rua Santa Cruz, 281 - Cambuí                                       ⎪ das 7h às 22h, de segunda a sábado. Das 8h as 20h aos domingos.     ⎪ 
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪
+⎪ Carrefour Iguatemi  ⎪ Carrefour Iguatemi, 140 - Vila Brandina                            ⎪ Horário de funcionamento: das 7h às 18h, todos os dias              ⎪ 
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪
+⎪ Carrefour Von Zuben ⎪ Av. Eng. Antonio Francisco de Paula Souza, 3900 - Jardim Von Zubem ⎪ Horário de funcionamento: das 7h às 18h, todos os dias              ⎪
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪
+⎪ Tenda Dom Pedro     ⎪ Rodovia Dom Pedro I, 140 - Santa Monica                            ⎪ das 7h às 22h, de segunda a sábado. Das 8h as 18h aos domingos      ⎪
+⎪---------------------⎪--------------------------------------------------------------------⎪---------------------------------------------------------------------⎪
+⎪ Carrefour Dom Pedro ⎪ Rodovia Dom Pedro I, 127 - Jardim Nilópolis                        ⎪ Horário de funcionamento: das 7h às 16h12, de segunda a sexta-feira ⎪
+⎪---------------------------------------------------------------------------------------------------------------------------------------------------------------⎪ 
+''')
+                break
 
             elif escolha_material2 == "7":
 
@@ -464,7 +495,7 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
                         posicao = lista_dist.index(min(lista_dist))
 
-                        print("O ecoponto mais próximo de você é o :", lista_ecoponto[posicao])
+                        print("O ecoponto mais próximo de você para o material escolhido é o :", lista_ecoponto[posicao])
 
                     elif funcao == "2":
 
@@ -522,7 +553,7 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
                         posicao = lista_dist.index(min(lista_dist))
 
-                        print("O ecoponto mais próximo de você é o :", lista_oleovegetal[posicao])
+                        print("O ecoponto mais próximo de você para o material escolhido é o :", lista_oleovegetal[posicao])
 
                     elif funcao == "2":
 
@@ -553,45 +584,14 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
     elif escolha_inicial == "4":
 
-        # Calculadora de preço de venda material reciclado
-
-        '''
-        a = metal
-        b = vidro
-        c = papel
-        d = plastico
-        '''
-        '''
-        print('a: metal; b: vidro; c: papel; d: plastico')
-        material = a
-            if material = a:
-                kilo = input('Quantos kilos de material você tem: ')
-                valor = kilo * 4.35
-                print(valor)
-            elif material = b:
-                kilo = input('Quantos kilos de material você tem: ')
-                valor = kilo * 6.95
-                print(valor)
-            elif material = c:
-                kilo = input('Quantos kilos de material você tem: ')
-                valor = kilo * 6.95
-                print(valor)
-            else:
-                kilo = input('Quantos kilos de material você tem: ')
-                valor = kilo * 6.95
-                print(valor)
-        '''
-
-        # Calculadora de preço de venda material reciclado
-
         print('''__________________________
-        ⎪ [1] - Plástico          ⎪  
-        ⎪ [2] - Vidro             ⎪                
-        ⎪ [3] - Metal             ⎪
-        ⎪ [4] - Papel             ⎪
-        ⎪ [5] - Voltar            ⎪
-        ⎪ [6] - Sair              ⎪
-        ⎪_________________________⎪               
+⎪ [1] - Plástico          ⎪  
+⎪ [2] - Vidro             ⎪                
+⎪ [3] - Metal             ⎪
+⎪ [4] - Papel             ⎪
+⎪ [5] - Voltar            ⎪
+⎪ [6] - Sair              ⎪
+⎪_________________________⎪               
              ''')
 
         material = input('Qual opção você deseja? ')
@@ -609,13 +609,16 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
                     kilo = float(input(f'Quantos quilos você tem: '))
 
-                    print('''TIPOS DE PLÁSTICO
-                    [1] - Garrafa PET
-                    [2] - Plástico diversos
-                    [3] - Voltar
-                    ''')
+                    print('''__________________________
+⎪    TIPOS DE PLÁSTICO    ⎪
+⎪                         ⎪
+⎪ [1] - Garrafa PET       ⎪
+⎪ [2] - Plástico diversos ⎪
+⎪ [3] - Voltar            ⎪
+⎪_________________________⎪
+''')
 
-                    plastico = input("Qual tipo de plástico voce possuí ")
+                    plastico = input("Qual tipo de plástico voce possuí? ")
 
                     while plastico != "3":
 
@@ -646,13 +649,16 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
                     kilo = float(input(f'Quantos quilos você tem: '))
 
-                    print('''TIPOS DE VIDRO
-                                    [1] - Branco
-                                    [2] - Verde / Marrom
-                                    [3] - Voltar
-                                    ''')
+                    print('''_______________________
+⎪    TIPOS DE VIDRO    ⎪
+⎪                      ⎪
+⎪ [1] - Branco         ⎪
+⎪ [2] - Verde / Marrom ⎪
+⎪ [3] - Voltar         ⎪
+⎪______________________⎪
+''')
 
-                    vidro = input("Qual tipo de vidro voce possuí ")
+                    vidro = input("Qual tipo de vidro voce possuí? ")
 
                     while vidro != "3":
 
@@ -682,16 +688,19 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
                     kilo = float(input(f'Quantos quilos você tem: '))
 
-                    print('''TIPOS DE METAL
-                    [1] - Metal
-                    [2] - Inox
-                    [3] - Alumínio
-                    [4] - Sucata de latinha
-                    [5] - Ferro misto
-                    [6] - Voltar
-                    ''')
+                    print('''__________________________
+⎪      TIPOS DE METAL     ⎪
+⎪                         ⎪
+⎪ [1] - Metal             ⎪   
+⎪ [2] - Inox              ⎪
+⎪ [3] - Alumínio          ⎪
+⎪ [4] - Sucata de latinha ⎪
+⎪ [5] - Ferro misto       ⎪
+⎪ [6] - Voltar            ⎪
+⎪_________________________⎪
+''')
 
-                    metal = input("Qual tipo de metal você possuí ")
+                    metal = input("Qual tipo de metal você possuí? ")
 
                     while metal != "6":
 
@@ -745,14 +754,17 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
 
                     kilo = float(input(f'Quantos quilos você tem: '))
 
-                    print('''TIPOS DE PAPEL
-                                                    [1] - Branco
-                                                    [2] - Mista
-                                                    [3] - Papelão
-                                                    [4] - Voltar
-                                                    ''')
+                    print('''_________________
+⎪ TIPOS DE PAPEL ⎪
+⎪                ⎪
+⎪ [1] - Branco   ⎪
+⎪ [2] - Mista    ⎪
+⎪ [3] - Papelão  ⎪
+⎪ [4] - Voltar   ⎪
+⎪________________⎪
+ ''')
 
-                    papel = input("Qual tipo de papel voce possuí ")
+                    papel = input("Qual tipo de papel voce possuí? ")
 
                     while papel != "4":
 
@@ -805,23 +817,7 @@ else:
     titulo("PROGRAMA FINALIZADO")
     quit()
 
-''' if material == 'metal':
-            valor = kilo * 1.5
-            print('Você receberá por', kilo, 'kg de metal R$', valor)
-        elif material == 'plastico':
-            valor = kilo * 0.4
-            print('Você receberá por', kilo, 'kg de plástico R$', valor)
-        elif material == 'vidro':
-            valor = kilo * 1.02
-            print('Você receberá por', kilo, 'kg de vidro R$', valor)
-        elif material == 'papel':
-            valor = kilo * 1.4
-            print('Você receberá por', kilo, 'kg de papel R$', valor)
-        else:
-            print('deu ruim')
-        break '''
-
-''' 
+'''
 
 MELHORAS A FAZER 
 

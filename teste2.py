@@ -1,48 +1,53 @@
-import json
+def distancia(lista_latitude, lista_longitude, p1, lista_ecoponto):
 
-import requests
+    lista_dist = []
 
-import
+                    y = 0
+                    while y < len(lista_latitude):
+                        dist_ecoponto = geopy.distance.distance(p1, (lista_latitude[y], lista_longitude[y])).km
+                        lista_dist.append(dist_ecoponto)
+                        y = y + 1
+                    print(linha())
 
-URL = 'http://www.viacep.com.br/ws/{}/json'
+                    print('''[ 1 ] - Ecoponto mais próximo
+    [ 2 ] - Ecopontos dentro de um determinado raio''')
 
+                    funcao = str(input("Qual função deseja realizar? "))
 
-def fetch_address(cep):
+                    while funcao != "1" and funcao != "2":
 
-    try:
-        response = requests.get(URL.format(cep))
+                        funcao = str(input("Função inválida, escolha alguma função presente no menu acima "))
 
-        if response.status_code == 200:
+                    else:
 
-            # Transforma o objeto requests em um dict
-            address = json.loads(response.text)
+                        if funcao == "1":
 
-            if address.get('erro'):
-                raise exceptions.CEPNotFound()
+                            # variavel que recebe a posição do valor a cima na lista de distancia
 
-            return {
-                'bairro': address.get('bairro', ''),
-                'cep': address.get('cep', ''),
-                'cidade': address.get('localidade', ''),
-                'logradouro': address.get('logradouro', ''),
-                'uf': address.get('uf', ''),
-                'complemento': address.get('complemento', ''),
-            }
+                            posicao = lista_dist.index(min(lista_dist))
 
-        elif response.status_code == 400:
-            raise exceptions.InvalidCEP()
+                            print("O ecoponto mais próximo de você é o :", lista_ecoponto[posicao])
 
-        else:
-            raise exceptions.BaseException('Other error. Status code: %d' % response.status_code)  # noqa
+                        elif funcao == "2":
 
-    except requests.exceptions.ConnectionError as errc:
-        raise exceptions.ConnectionError(errc)
+                            raio = int(input("A partir de um raio de quantos quilometros deseja listar os pontos de "
+                                             "coleta? "))
 
-    except requests.exceptions.Timeout as errt:
-        raise exceptions.Timeout(errt)
+                            # cria uma lista com todos os valores da lista_dist menores ou igual a 5
 
-    except requests.exceptions.HTTPError as errh:
-        raise exceptions.HTTPError(errh)
+                            lista_raio = [x for x in lista_dist if x <= raio]
 
-    except requests.exceptions.RequestException as e:
-        raise exceptions.BaseException(e)
+                            # verifica cada valor de lista_raio na lista_dist para saber seu indice
+                            # compara com o indice da lista_ecoponto para pegar o nome dos locais
+
+                            x = 0
+
+                            if lista_raio == []:
+                                print("Não possuem ecopontos dentro de um raio de 5 km do seu endereço")
+                            else:
+                                print(linha())
+                                print(f"O(s) ecopontos dentro de um raio de {raio} km do seu endereço são :")
+                                while x < len(lista_raio):
+                                    posicao1 = lista_dist.index(lista_raio[x])
+                                    print(lista_ecoponto[posicao1])
+                                    x = x + 1
