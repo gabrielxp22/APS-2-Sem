@@ -278,6 +278,9 @@ reaproveitados, exemplo:  na produção de cimento, ou são enviados para uma de
             elif escolha_material == "7": #ELIF RESPOSAVEL POR FECHAR O PROGRAMA
                 print("Sair")
 
+            else:
+                escolha_material = input("Escolha inválida, digite novamente ")
+
         if escolha_material == "7":
 
             titulo("PROGRAMA FINALIZADO")
