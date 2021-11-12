@@ -820,15 +820,5 @@ else:
     titulo("PROGRAMA FINALIZADO")
     quit()
 
-'''
-
-MELHORAS A FAZER 
-
-    1 - Utilizar função para evitar partes repetidas do código
-    2 - Tratar TODAS excessoes 
-    3 - Comentar todo o código
-    4 - Otimizar e simplificar toda linha do comando possível
-    
-'''
 
 
