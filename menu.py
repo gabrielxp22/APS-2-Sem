@@ -4,10 +4,10 @@ import pycep_correios
 from pycep_correios import exceptions
 
 
-
 def titulo_menu2(txt):
     print(linha_menu2())
     print(txt.center(180))
+
 
 def linha_menu2():
     return "-" * 180
